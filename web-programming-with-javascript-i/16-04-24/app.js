@@ -1,8 +1,13 @@
-const anoNascimento = 1988;
+// input
+const nome = prompt("Insira seu nome");
+const anoNascimento = prompt("Insira seu ano de nascimento");
+
+// processamento
 const anoAtual = new Date().getFullYear();
 const idade = (anoAtual-anoNascimento);
-const nome = "Glauco";
 const mensagem = "Sou " + nome + " e tenho " + idade + " anos";
-console.log(mensagem);
 
-console.log('##Programação Web com JavaScript I [24E2_2]')
+// output
+alert(mensagem);
+
+console.log('Programação Web com JavaScript I [24E2_2]')
