@@ -1,29 +1,40 @@
-// constantes
-const SALARIO_ATE_20 = 1000;
-const SALARIO_ACIMA_20 = 2000;
+function calcularIdade() {
+    const hoje = new Date();
+    const anoAtual = hoje.getFullYear();
+    const idade = anoAtual - anoNascimento;
 
-// input
-anoNascimento = parseInt(prompt("Insira seu ano de nascimento"));
-nome = prompt("Insira seu nome");
-salarioBase = parseFloat(prompt("Insira seu salário base"));
-gratificacao = parseFloat(prompt("Insira sua gratificação"));
-bonus = parseFloat(prompt("Insira seu bônus"));
-desconto = parseFloat(prompt("Informe o desconto"));
+    return idade
+}
 
-salarioLiquido = 0;
-adicional = 0;
+function calcularValorAdicional(aIdade) {
+    const SALARIO_ACIMA_20 = 2000;
+    const SALARIO_ATE_20 = 1000;
+    const IDADE_LIMITE = 20;
 
-// processamento
-hoje = new Date();
-anoAtual = hoje.getFullYear();
-idade = anoAtual - anoNascimento;
+    let adicional = SALARIO_ACIMA_20
+    if(aIdade <= IDADE_LIMITE) {
+        adicional = SALARIO_ATE_20
+    }
+    return adicional
+}
 
-adicional = idade <= 20 ? SALARIO_ATE_20 : SALARIO_ACIMA_20;
+function impressao() {    
+    // input
+    anoNascimento = parseInt(document.getElementById("anoNascimento").value);
+    nome = document.getElementById("nome").value;
+    salarioBase = parseInt(document.getElementById("salarioBase").value);
+    gratificacao = parseInt(document.getElementById("gratificacao").value);
+    bonus = parseInt(document.getElementById("bonus").value);
+    desconto = parseInt(document.getElementById("desconto").value);
 
-salarioLiquido = salarioBase + gratificacao + bonus - desconto + adicional;
+    // processamento
+    const idade = calcularIdade();
+    
+    let  adicional = calcularValorAdicional(idade);
 
-// output
-mensagem = "Sou " + nome + " tenho " + idade + " anos e ganho R$" + salarioLiquido;
-alert(mensagem);
+    let salarioLiquido = salarioBase + gratificacao + bonus - desconto + adicional;
 
-console.log('Programação Web com JavaScript I [24E2_2]')
+    // output
+    mensagem = "Sou " + nome + " tenho " + idade + " anos e ganho R$" + salarioLiquido;
+    alert(mensagem);
+}
